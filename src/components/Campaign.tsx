@@ -36,13 +36,13 @@ function Campaign() {
         <Stack direction='row' gap={5} sx={{justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', paddingTop: '2rem'}}>
             {status.length === 0 
                 ? <>
-                    <CampaignItem id={null} planetName={null} initialOwner={null} />
-                    <CampaignItem id={null} planetName={null} initialOwner={null} />
-                    <CampaignItem id={null} planetName={null} initialOwner={null} />
+                    <CampaignItem index={1} planetName={null} initialOwner={null} />
+                    <CampaignItem index={2} planetName={null} initialOwner={null} />
+                    <CampaignItem index={3} planetName={null} initialOwner={null} />
                 </>
-                : status.filter(e => e.players > 0).sort((a, b) => b.players - a.players).map(e => {
+                : status.filter(e => e.players > 0).sort((a, b) => b.players - a.players).map((e, index) => {
                         return (
-                            <CampaignItem key={e.id} id={e.id} liberation={e.liberation} players={e.players} planetName={e.planet.name} initialOwner={e.planet.initial_owner} />
+                            <CampaignItem index={index} liberation={e.liberation} players={e.players} planetName={e.planet.name} initialOwner={e.planet.initial_owner} />
                         )
                     })
             }
