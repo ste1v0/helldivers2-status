@@ -7,7 +7,7 @@ function fetchStatus() {
             return res.json()
         })
         .then(data => {
-            return data
+            return data.planet_status
         })
         .catch(error => {
             console.log(error)
