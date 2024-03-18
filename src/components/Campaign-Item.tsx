@@ -8,7 +8,7 @@ function CampaignItem({ id, planetName, initialOwner, liberation, players } : { 
     const { isLoading } = useLoadingContext()
 
     return (
-        <Card key={id} sx={{ minWidth: 245, background: '#202020', ":hover": { transition: 'all 0.3s', transform: 'scale(1.05)' }, boxShadow: `5px 0px ${initialOwnerColor}`, borderRadius: 0 }}>
+        <Card key={id} sx={{ minWidth: 245, background: '#202020', ":hover": { transition: 'all 0.3s', transform: 'scale(1.05)' }, boxShadow: `3px 0px ${initialOwnerColor}`, borderRadius: 0, position: 'relative'}}>
             <CardContent>
                 <Typography color={'#9B9B9B'} fontWeight={'200'} sx={{ fontSize: 14 }} gutterBottom>
                     {!isLoading ? 'Planet' : <Skeleton width={'4rem'} />}
@@ -17,7 +17,7 @@ function CampaignItem({ id, planetName, initialOwner, liberation, players } : { 
                     {!isLoading ? planetName : <Skeleton width={'12rem'}/>}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color={'#9B9B9B'} fontWeight={'200'} gutterBottom>
-                    {!isLoading && initialOwner
+                    {!isLoading 
                             ? initialOwner === 'Automaton' 
                                 ?  '🤖'
                                 : initialOwner === 'Humans'
@@ -26,7 +26,7 @@ function CampaignItem({ id, planetName, initialOwner, liberation, players } : { 
                         : <Skeleton width={'4rem'}/>
                     }
                 </Typography>
-                    {!isLoading && liberation
+                    {!isLoading && liberation || liberation === 0
                         ? <>
                             <Typography color={'#FFF'} fontWeight={'200'} sx={{ fontSize: 14, mb: 0.5}}>
                                 Liberation: {liberation === 100 || liberation === 0 ? `${Math.ceil(liberation)}%` : `${liberation?.toFixed(2)}%`}
